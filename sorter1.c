@@ -101,18 +101,12 @@ void	sort_stacks(t_stack *stacks)
 		
 			target_finder(stacks, index);
 			cost_calculator(stacks, index, 0);
-			/*ft_printf("stacka[index] :%d\n", stacks->stack_a[index]);
-			ft_printf("index :%d\n", index);
-			ft_printf("cost :%d\n", stacks->cost[index]);
-			ft_printf("target :%d\n", stacks->target[index]);
-			ft_printf("min B :%d\nmaxB :%d\n", stacks->minb, stacks->maxb);*/
 			if (stacks->cost[index] <= 1)
 				break ;
 			index++;
 		}
-		//ft_printf("a_nbr %d, target_nbr %d, cost %d\n", stacks->stack_a[index], stacks->target[index], stacks->cost[index]);
-		//ft_printf("pushowana liczba :%d\n", );
 		stacks->cheapest = find_index(stacks);
+		target_finder(stacks, stacks->cheapest);
 		cost_calculator(stacks, stacks->cheapest, 1);
 		pb(stacks);
 	}

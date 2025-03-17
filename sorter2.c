@@ -27,8 +27,7 @@ void	cost_calculator(t_stack *stacks, int index, int flag)
 		cost_optimizer(stacks, ma, mb, index);
 		return ;
 	}
-	else
-		rotate(stacks, ma, mb);
+rotate(stacks, ma, mb);
 }
 
 
@@ -59,8 +58,7 @@ void	cost_optimizer(t_stack *stacks, int ma, int mb, int index)
 }
 
 void	polish_stacks(t_stack *stacks, int ma, int mb)
-{ 
-	//ft_printf("chuj mb %d\nma %d\n", mb, ma);
+{
 	if (mb > 0)
 		while (mb--)
 			rb(stacks);
@@ -93,23 +91,17 @@ int	find_min_index(t_stack *stacks, int len)
 
 void	rotate(t_stack *stacks, int ma, int mb)
 {
-	if (mb > 0 && ma > 0)
+	while (mb > 0 && ma > 0)
 	{
-		while (mb && ma)
-		{
-			rr(stacks);
-			mb--;
-			ma--;
-		}
+		rr(stacks);
+		mb--;
+		ma--;
 	}
-	else if (mb < 0 && ma < 0)
+	while (mb < 0 && ma < 0)
 	{
-		while (mb && ma)
-		{
-			rrr(stacks);
-			mb++;
-			ma++;
-		}
+		rrr(stacks);
+		mb++;
+		ma++;
 	}
 	polish_stacks(stacks, ma, mb);
 }
