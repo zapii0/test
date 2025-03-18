@@ -34,7 +34,7 @@ void	ss(t_stack *stacks)
 	ft_printf("%s\n", "ss");
 }
 
-void	ra(t_stack *stacks)
+void	ra(t_stack *stacks, int flag)
 {
 	int	i;
 	int tmp;
@@ -47,10 +47,11 @@ void	ra(t_stack *stacks)
 		i++;
 	}
 	stacks->stack_a[stacks->lenA - 1] = tmp;
-	ft_printf("%s\n", "ra");
+	if (flag == 0)
+		ft_printf("%s\n", "ra");
 }
 
-void	rb(t_stack *stacks)
+void	rb(t_stack *stacks, int flag)
 {
 	int	i;
 	int tmp;
@@ -63,5 +64,6 @@ void	rb(t_stack *stacks)
 		i++;
 	}
 	stacks->stack_b[stacks->lenB - 1] = tmp;
-	ft_printf("%s\n", "rb");
+	if (flag == 0)
+		ft_printf("%s\n", "rb");
 }

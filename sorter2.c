@@ -61,16 +61,16 @@ void	polish_stacks(t_stack *stacks, int ma, int mb)
 {
 	if (mb > 0)
 		while (mb--)
-			rb(stacks);
+			rb(stacks, 0);
 	else if (mb < 0)
 		while (mb++)
-			rrb(stacks);
+			rrb(stacks, 0);
 	if (ma > 0)
 		while (ma--)
-			ra(stacks);
+			ra(stacks, 0);
 	else if (ma < 0)
 		while (ma++)
-			rra(stacks);
+			rra(stacks, 0);
 }
 
 int	find_min_index(t_stack *stacks, int len)

@@ -6,7 +6,7 @@
 /*   By: mzapora <mzapora@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 22:25:50 by mzapora           #+#    #+#             */
-/*   Updated: 2025/03/11 00:15:11 by mzapora          ###   ########.fr       */
+/*   Updated: 2025/03/18 18:24:11 by mzapora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void    rr(t_stack *stacks)
 {
     if (stacks->lenA < 2 || stacks->lenB < 2)
         return ;
-    ra(stacks);
-    rb(stacks);
+    ra(stacks, 1);
+    rb(stacks, 1);
 	ft_printf("%s\n", "rr");
 }
-void	rra(t_stack *stacks)
+void	rra(t_stack *stacks, int flag)
 {
 	int	i;
 	int	tmp;
@@ -36,10 +36,11 @@ void	rra(t_stack *stacks)
 		i--;
 	}
 	stacks->stack_a[0] = tmp;
-	ft_printf("%s\n", "rra");
+	if (flag == 0)
+		ft_printf("%s\n", "rra");
 }
 
-void	rrb(t_stack *stacks)
+void	rrb(t_stack *stacks, int flag)
 {
 	int	i;
 	int	tmp;
@@ -54,15 +55,16 @@ void	rrb(t_stack *stacks)
 		i--;
 	}
 	stacks->stack_b[0] = tmp;
-	ft_printf("%s\n", "rrb");
+	if (flag == 0)
+		ft_printf("%s\n", "rrb");
 }
 
 void	rrr(t_stack *stacks)
 {
 	if (stacks->lenA < 2 || stacks->lenB < 2)
 		return ;
-	rra(stacks);
-	rrb(stacks);
+	rra(stacks, 1);
+	rrb(stacks, 1);
 	ft_printf("%s\n", "rrr");
 }
 

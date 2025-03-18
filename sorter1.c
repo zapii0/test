@@ -15,14 +15,14 @@ void	sort_three(t_stack *stacks)
 	}
 	else if (stacks->stack_a[0] == max)
 	{
-		ra(stacks);
+		ra(stacks, 0);
 		if (issorted(stacks) == 1)
 			return ;
 		sa(stacks);
 	}
 	else
 	{
-		rra(stacks);
+		rra(stacks, 0);
 		if (issorted(stacks) == 1)
 			return ;
 		sa(stacks);
