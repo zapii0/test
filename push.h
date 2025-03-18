@@ -14,6 +14,8 @@ typedef struct Stack
 	int *target;
 	int minb;
 	int maxb;
+	int	maxa;
+	int	mina;
 	int	mb;
 	int	ma;
 	int	cheapest;
@@ -21,9 +23,11 @@ typedef struct Stack
 
 t_stack	*converter(char **av);
 void	free_stacks(t_stack *stacks);
+int		find_index_a(t_stack *stacks, int wanted);
 void	*ft_clean(char **list);
 int		numbercounter(char **av);
 int		issorted(t_stack *stacks);
+void    push_a(t_stack *stacks);
 void	sort_three(t_stack *stacks);
 int		find_max(int *stack, int len);
 void	cost_optimizer(t_stack *stacks, int ma, int mb, int index);
@@ -32,6 +36,7 @@ int		find_min_index(t_stack *stack, int len);
 void	sort_stacks(t_stack *stacks);
 void	rotate(t_stack *stacks, int ma, int mb);
 void	polish_stacks(t_stack *stacks, int ma, int mb);
+int		find_min(int *stack, int len);
 int		find_index_b(t_stack *stacks, int wanted);
 int		find_index(t_stack *stacks);
 void	sa(t_stack *stacks);

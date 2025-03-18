@@ -106,33 +106,4 @@ void	rotate(t_stack *stacks, int ma, int mb)
 	polish_stacks(stacks, ma, mb);
 }
 
-int	find_index(t_stack *stacks)
-{
-	int	i;
-	int	tmp;
-
-	i = 0;
-	tmp = 0;
-	while (i < stacks->lenA)
-	{
-		if (stacks->cost[i] < stacks->cost[tmp])
-			tmp = i;
-		i++;
-	}
-	return (tmp);
-}
-
-int find_index_b(t_stack *stacks, int wanted)
-{
-    int i;
-
-    i = 0;
-    while (i < stacks->lenB)
-    {
-        if (stacks->stack_b[i] == wanted)
-            return (i);
-        i++;
-    }
-    return (0);
-}
 

@@ -78,12 +78,12 @@ int main(int ac, char **av)
 	stacks = converter(av);
 	stacks->lenB = 0;
 	stacks->lenA = stacks->len;
-	//int	i = 0;
+	int	i = 0;
 	pushswap(stacks);
-	/*while (i < stacks->len)
+	while (i < stacks->len)
 	{
-		printf("%d\n", stacks->stack_b[i]);
+		printf("%d\n", stacks->stack_a[i]);
 		i++;
-	}*/
+	}
 	return (free_stacks(stacks), 0);
 }

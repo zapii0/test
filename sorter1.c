@@ -90,7 +90,6 @@ void	sort_stacks(t_stack *stacks)
 
 	pb(stacks);
 	pb(stacks);
-	index = 0;
 	while (stacks->lenA > 3)
 	{
 		stacks->maxb = find_max(stacks->stack_b, stacks->lenB);
@@ -111,4 +110,5 @@ void	sort_stacks(t_stack *stacks)
 		pb(stacks);
 	}
 	sort_three(stacks);
+	push_a(stacks);
 }
