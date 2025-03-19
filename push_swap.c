@@ -28,6 +28,21 @@ int *stack_creator(char **av, int *sa)
 	}
 	return (sa);
 }
+void	polish_stack_a(t_stack *stacks)
+{
+	int	index;
+
+	index = find_index_a(stacks, stacks->mina);
+	if (index <= stacks->lenA / 2)
+		while (index-- > 0)
+			ra(stacks, 0);
+	else
+	{
+		index = stacks->lenA - index;
+		while (index-- > 0)
+			rra(stacks, 0);
+	}
+}
 
 t_stack	*converter(char **av)
 {
@@ -75,15 +90,20 @@ int main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
+	if (error_finder(av))
+	{
+		ft_printf("error\n");
+		return (0);
+	}
 	stacks = converter(av);
 	stacks->lenB = 0;
 	stacks->lenA = stacks->len;
-	int	i = 0;
-	pushswap(stacks);
-	while (i < stacks->len)
+	if (duplicate_finder(stacks))
 	{
-		printf("%d\n", stacks->stack_a[i]);
-		i++;
+		ft_printf("error\n");
+		free_stacks(stacks);
+		return (0);
 	}
+	pushswap(stacks);
 	return (free_stacks(stacks), 0);
 }

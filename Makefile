@@ -1,5 +1,5 @@
 CC = cc -Wall -Wextra -Werror -g
-SRC = push_swap.c utils.c moves.c moves2.c sorter1.c sorter2.c sorter3.c
+SRC = push_swap.c utils.c moves.c moves2.c sorter1.c sorter2.c sorter3.c error.c
 OBJ = ${SRC:.c=.o}
 AR = ar rcs
 RM = rm -f

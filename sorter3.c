@@ -31,12 +31,27 @@ int find_index_b(t_stack *stacks, int wanted)
     return (0);
 }
 
+int	target_a(t_stack *stacks)
+{
+	int	tmp;
+	int	i;
+
+	i = 0;
+	tmp = INT_MAX;
+	while (i < stacks->lenA)
+	{
+		if (stacks->stack_a[i] > stacks->stack_b[0] && tmp > stacks->stack_a[i])
+			tmp = stacks->stack_a[i];
+		i++;
+	}
+	tmp = find_index_a(stacks, tmp);
+	return (tmp);
+}
 
 void    push_a(t_stack *stacks)
 {
     int	index;
-	stacks->mina = find_min(stacks->stack_a, stacks->lenA);
-	stacks->maxa = find_max(stacks->stack_a, stacks->lenA);
+
 	while (stacks->lenB)
 	{
 		index = target_a(stacks);
@@ -50,7 +65,11 @@ void    push_a(t_stack *stacks)
 				rra(stacks, 0);
 		}
 		pa(stacks);
+		stacks->mina = find_min(stacks->stack_a, stacks->lenA);
+		stacks->maxa = find_max(stacks->stack_a, stacks->lenA);
 	}
+	if (!issorted(stacks))
+		polish_stack_a(stacks);
 }
 int find_index_a(t_stack *stacks, int wanted)
 {
