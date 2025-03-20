@@ -23,20 +23,30 @@ int	duplicate_finder(t_stack *stacks)
 
 int error_finder(char **av)
 {
-	char	**splited;
-	//int		*sa;
-	int		i;
-
-	i = 0;
-	while (av[i])
-	{
-		splited = ft_split(av[i], ' ');
-		if (!splited || !ft_isdigit(splited[i][0]))
-			return (1);
-		i++;
-	}
-	ft_clean(splited);
-	return (0);
+    while (av[i])
+    {
+        splited = ft_split(av[i], ' ');
+        if (!splited)
+            return (1); // Błąd alokacji pamięci
+        j = 0;
+        while (splited[j])
+        {
+            k = 0;
+            while (splited[j][k])
+            {   
+                if (!ft_isdigit(splited[j][k]))
+                {   
+                    ft_clean(splited); // Sprzątanie pamięci przed zwróceniem błędu
+                    return (1);
+                }
+                k++;
+            }
+            j++;
+        }
+        ft_clean(splited); // Zwolnienie pamięci po przetworzeniu
+        i++;
+    }
+    return (0);
 }
 
 int	ft_atol(const char *nptr)

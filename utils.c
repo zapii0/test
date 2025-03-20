@@ -50,6 +50,8 @@ int	numbercounter(char **av)
 			counter++;
 			k++;
 		}
+		if (error_finder(splitted))
+			return (ft_clean(splitted), -1);
 		ft_clean(splitted);
 		k = 0;
 		j++;
