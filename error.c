@@ -33,7 +33,7 @@ int error_finder(char **splited)
 			return (0);
 		}
 		j++;
-	}
+		}
 	return (1);
 }
 
@@ -70,16 +70,27 @@ int	ft_isdigitboosted(char *str)
 	int	i;
 
 	i = 0;
-	if (!str || !str[i]) // Sprawdzenie, czy `str` nie jest puste
-		return (0);
-	if (str[i] == '-') // Obsługa liczby ujemnej
-		i++;
-	while (str[i])
+	if (str[i] == '-' && ft_isdigit(str[i + 1]) == 1 && str[i + 1])
 	{
-		if (!ft_isdigit(str[i]))
-			return (0); // Jeśli znajdzie niecyfrowy znak, zwraca 0 (fałsz)
 		i++;
+		while (str[i])
+		{
+			if (ft_isdigit(str[i]))
+				i++;
+			else
+				return (0);
+		}
 	}
-	return (1); // Zwraca 1 (prawda), jeśli string zawiera tylko cyfry
+	else
+	{
+		while (str[i])
+		{
+			if (ft_isdigit(str[i]))
+				i++;
+			else
+				return (0);
+		}
+	}
+	return (1);
 }
 
