@@ -53,10 +53,7 @@ t_stack	*converter(char **av)
 		return (NULL);
 	j = numbercounter(av);
 	if (j == -1)
-	{
-		ft_printf("error\n");
 		return (NULL);
-	}
 	stacks->stack_a = malloc(sizeof(int) * j);
 	stacks->stack_b = malloc(sizeof(int) * j);
 	stacks->cost = malloc(sizeof(int) * j);
@@ -95,15 +92,18 @@ int main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	
 	stacks = converter(av);
 	if (stacks == NULL)
+	{
+		write(2, "error\n", 6);
+		free_stacks(stacks);
 		return (0);
+	}
 	stacks->lenB = 0;
 	stacks->lenA = stacks->len;
 	if (duplicate_finder(stacks))
 	{
-		ft_printf("error\n");
+		write(2, "error\n", 6);
 		free_stacks(stacks);
 		return (0);
 	}

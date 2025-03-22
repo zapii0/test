@@ -21,33 +21,22 @@ int	duplicate_finder(t_stack *stacks)
 	return (0);
 }
 
-int error_finder(char **av)
+int error_finder(char **splited)
 {
-    while (av[i])
-    {
-        splited = ft_split(av[i], ' ');
-        if (!splited)
-            return (1); // Błąd alokacji pamięci
-        j = 0;
-        while (splited[j])
-        {
-            k = 0;
-            while (splited[j][k])
-            {   
-                if (!ft_isdigit(splited[j][k]))
-                {   
-                    ft_clean(splited); // Sprzątanie pamięci przed zwróceniem błędu
-                    return (1);
-                }
-                k++;
-            }
-            j++;
-        }
-        ft_clean(splited); // Zwolnienie pamięci po przetworzeniu
-        i++;
-    }
-    return (0);
+	int j;
+
+	j = 0;
+	while (splited[j])
+	{
+		if (!ft_isdigitboosted(splited[j]))
+		{
+			return (0);
+		}
+		j++;
+	}
+	return (1);
 }
+
 
 int	ft_atol(const char *nptr)
 {
@@ -75,3 +64,22 @@ int	ft_atol(const char *nptr)
 		return (0);
 	return (num * m);
 }
+
+int	ft_isdigitboosted(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !str[i]) // Sprawdzenie, czy `str` nie jest puste
+		return (0);
+	if (str[i] == '-') // Obsługa liczby ujemnej
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0); // Jeśli znajdzie niecyfrowy znak, zwraca 0 (fałsz)
+		i++;
+	}
+	return (1); // Zwraca 1 (prawda), jeśli string zawiera tylko cyfry
+}
+
