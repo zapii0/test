@@ -29,14 +29,34 @@ int error_finder(char **splited)
 	while (splited[j])
 	{
 		if (!ft_isdigitboosted(splited[j]))
-		{
 			return (0);
-		}
+		if (!ft_minmax(splited[j]))
+			return (0);
 		j++;
 		}
 	return (1);
 }
+int	ft_minmax(char *nbr)
+{
+	int	i;
 
+	i = ft_strlen(nbr);
+	if (nbr[0] == '-' && i > 11)
+		return (0);
+	if (i > 10 && nbr[0] != '-')
+		return (0);
+	if (nbr[0] == '-' && i == 11)
+		if (nbr[1] > '2' || nbr[2] > '1' || nbr[3] > '4' || nbr[4] > '7' \
+		|| nbr[5] > '4' || nbr[6] > '8' || nbr[7] > '3' || nbr[8] > '6' \
+		|| nbr[9] > '4' || nbr[10] > '7')
+		return (0);
+	if (nbr[0] != '-' && i == 10)
+		if (nbr[0] > '2' || nbr[1] > '1' || nbr[2] > '4' || nbr[3] > '7' \
+		|| nbr[4] > '4' || nbr[5] > '8' || nbr[6] > '3' || nbr[7] > '6' \
+		|| nbr[8] > '4' || nbr[9] > '7')
+		return (0);
+	return (1);
+}
 
 int	ft_atol(const char *nptr)
 {

@@ -24,6 +24,7 @@ typedef struct Stack
 t_stack	*converter(char **av);
 void	free_stacks(t_stack *stacks);
 int		find_index_a(t_stack *stacks, int wanted);
+int		ft_minmax(char *nbr);
 void	*ft_clean(char **list);
 int		numbercounter(char **av);
 int		issorted(t_stack *stacks);

@@ -55,6 +55,8 @@ void    push_a(t_stack *stacks)
 	while (stacks->lenB)
 	{
 		index = target_a(stacks);
+		if (index == -1)
+			return ;
 		if (index <= stacks->lenA / 2)
 			while (index-- > 0)
 				ra(stacks, 0);
